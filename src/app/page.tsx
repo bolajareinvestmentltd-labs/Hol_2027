@@ -67,7 +67,7 @@ export default function Home() {
           </h1>
           
           <p className="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow">
-            For decades, Hakeem Lawal has stood for steady leadership and service. Now he brings that experience back to build a stronger, fairer Kwara for everyone.
+            A true son of Kwara with decades of dedicated service. Hakeem Lawal's repeated commitment across multiple campaigns demonstrates his unwavering belief in our state's potential and his people's welfare. His persistence through the years proves his motivation is genuine progress—now he deserves the opportunity to lead.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
