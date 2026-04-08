@@ -51,10 +51,10 @@ export default function Home() {
             }`}
           >
             <img 
-              src={src} 
-              className="w-full h-full object-cover object-top" 
-              alt={`Hakeem Lawal Campaign Slide ${index + 1}`} 
-            />
+  src={src} 
+  className="w-full h-full object-cover object-center" 
+  alt={`Hakeem Lawal Campaign Slide ${index + 1}`} 
+/>
           </div>
         ))}
 
