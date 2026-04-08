@@ -1,33 +1,74 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 export default function Home() {
+  // These represent your 3-4 hero images. 
+  // Later, you will name your real images 'hero1.jpg', 'hero2.jpg', etc., and put them in the 'public' folder.
+  const heroImages = [
+    "bg-slate-900", // Placeholder 1
+    "bg-blue-900",  // Placeholder 2
+    "bg-slate-800", // Placeholder 3
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // This automatically changes the slide every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
+
   return (
     <main className="min-h-screen bg-white selection:bg-blue-900 selection:text-white pb-20">
-      {/* Navigation Placeholder */}
-      <nav className="w-full p-6 flex justify-between items-center max-w-7xl mx-auto">
-        <div className="text-2xl font-black tracking-tighter text-slate-900">
-          HOL <span className="text-blue-700">2027</span>
+      {/* Navigation */}
+      <nav className="w-full p-6 flex justify-between items-center max-w-7xl mx-auto absolute top-0 left-0 right-0 z-50">
+        <div className="text-2xl font-black tracking-tighter text-white drop-shadow-md">
+          HOL <span className="text-blue-400">2027</span>
         </div>
-        <div className="hidden md:flex gap-6 text-sm font-semibold text-slate-600">
-          <span className="hover:text-blue-700 cursor-pointer transition">About</span>
-          <span className="hover:text-blue-700 cursor-pointer transition">Legacy</span>
-          <span className="hover:text-blue-700 cursor-pointer transition">Issues</span>
+        <div className="hidden md:flex gap-6 text-sm font-semibold text-white drop-shadow-md">
+          <span className="hover:text-blue-300 cursor-pointer transition">About</span>
+          <span className="hover:text-blue-300 cursor-pointer transition">Legacy</span>
+          <span className="hover:text-blue-300 cursor-pointer transition">Issues</span>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative bg-slate-900 pt-24 pb-32 px-6 overflow-hidden rounded-b-[3rem] sm:rounded-b-[5rem] mx-2 sm:mx-4 shadow-2xl">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full bg-blue-900/20 blur-3xl rounded-full pointer-events-none"></div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto text-center mt-10">
-          <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-900/30 backdrop-blur-sm text-blue-200 text-sm font-bold tracking-wide">
+      {/* Hero Section with Carousel Background */}
+      <section className="relative h-[90vh] min-h-[600px] w-full overflow-hidden flex items-center justify-center">
+        {/* Carousel Backgrounds */}
+        {heroImages.map((bgClass, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${bgClass} ${
+              currentSlide === index ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {/* When you have real images, you will replace the bgClass above with an img tag like this:
+                <img src={`/hero${index + 1}.jpg`} className="w-full h-full object-cover" alt="Campaign" /> 
+            */}
+            <div className="w-full h-full flex items-center justify-center text-slate-500/50 font-bold text-2xl">
+              [Image {index + 1} Goes Here]
+            </div>
+          </div>
+        ))}
+
+        {/* Dark Cinematic Overlay - This makes the white text readable over any photo */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-slate-900 z-10"></div>
+
+        {/* Hero Content (On Top of Carousel) */}
+        <div className="relative z-20 max-w-4xl mx-auto text-center px-6 mt-16">
+          <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-blue-400/50 bg-blue-900/40 backdrop-blur-md text-blue-100 text-sm font-bold tracking-wide">
             THE OFFICIAL CAMPAIGN PLATFORM
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight drop-shadow-lg">
             Legacy of Service, <br className="hidden md:block" />
             <span className="text-blue-400">Future for Kwara</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow">
             For decades, Hakeem Lawal has stood for steady leadership and service. Now he brings that experience back to build a stronger, fairer Kwara for everyone.
           </p>
           
@@ -35,24 +76,15 @@ export default function Home() {
             <button className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all transform hover:-translate-y-1">
               Join the Movement
             </button>
-            <button className="w-full sm:w-auto bg-transparent border border-slate-500 hover:border-white hover:bg-white/5 text-white font-bold py-4 px-8 rounded-full transition-all">
+            <button className="w-full sm:w-auto bg-transparent border-2 border-white hover:bg-white hover:text-slate-900 text-white font-bold py-4 px-8 rounded-full transition-all">
               Explore the Legacy
             </button>
           </div>
         </div>
       </section>
 
-      {/* Image Placeholder - Hero */}
-      <section className="max-w-5xl mx-auto -mt-16 relative z-20 px-6">
-        <div className="w-full h-64 md:h-[400px] bg-slate-200 rounded-3xl shadow-xl flex items-center justify-center border-4 border-white overflow-hidden">
-          <p className="text-slate-500 font-semibold">
-            [High-Res Portrait of Hakeem Lawal Goes Here]
-          </p>
-        </div>
-      </section>
-
-      {/* Legacy & About Section */}
-      <section className="max-w-7xl mx-auto px-6 pt-32 pb-16">
+      {/* About Him & Legacy Section (Combined) */}
+      <section className="max-w-7xl mx-auto px-6 pt-24 pb-16">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Left Side: Copy */}
           <div>
@@ -80,15 +112,15 @@ export default function Home() {
             </ul>
           </div>
 
-          {/* Right Side: Legacy Image Placeholder */}
+          {/* Right Side: Portrait Image (Moved down as you requested) */}
           <div className="relative">
             <div className="absolute inset-0 bg-blue-600 rounded-3xl transform translate-x-4 translate-y-4 -z-10"></div>
-            <div className="w-full h-[500px] bg-slate-200 rounded-3xl border-4 border-white shadow-lg flex flex-col items-center justify-center p-8 text-center">
-              <p className="text-slate-500 font-bold mb-2">
-                [Legacy Composite Photo]
+            <div className="w-full h-[500px] bg-slate-200 rounded-3xl border-4 border-white shadow-lg flex flex-col items-center justify-center p-8 text-center overflow-hidden">
+              <p className="text-slate-500 font-bold text-xl mb-2">
+                [High-Res Portrait Here]
               </p>
               <p className="text-slate-400 text-sm max-w-xs">
-                Place a strong photo of Rear Admiral Mohammed Alabi Lawal alongside a professional shot of Hakeem here.
+                This is the perfect spot for his standalone portrait or the legacy composite photo.
               </p>
             </div>
           </div>
