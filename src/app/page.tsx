@@ -58,7 +58,7 @@ export default function Home() {
         {/* Hero Content */}
         <div className="relative z-20 max-w-4xl mx-auto text-center px-6 mt-16">
           <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-blue-400/50 bg-blue-900/40 backdrop-blur-md text-blue-100 text-sm font-bold tracking-wide">
-            THE OFFICIAL CAMPAIGN PLATFORM
+            VISION FOR KWARA
           </div>
           
           <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight drop-shadow-lg">
