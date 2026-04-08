@@ -41,7 +41,8 @@ export default function Home() {
       </nav>
 
       {/* Hero Section - Redesigned to NEVER cut off buttons on mobile */}
-      <section className="relative min-h-[70vh] md:min-h-screen w-full flex flex-col justify-center items-center bg-slate-900 pt-28 pb-16 px-4">
+      {/* Added bg-slate-900 and increased bottom padding to create more blending space */}
+<section className="relative min-h-screen w-full flex flex-col justify-center items-center bg-slate-900 pt-32 pb-32 px-4">
         
         {heroImages.map((src, index) => (
           <div
@@ -52,13 +53,15 @@ export default function Home() {
           >
             <img 
   src={src} 
-  className="w-full h-full object-contain object-top md:object-cover md:object-center bg-slate-900" 
+  // Changed object-center back to object-top. object-cover will fill the space.
+  className="w-full h-full object-cover object-top" 
   alt={`Hakeem Lawal Campaign Slide ${index + 1}`} 
 />
           </div>
         ))}
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-slate-900 z-10"></div>
+        {/* Updated gradient to be more subtle at the top and transition deeper at the bottom */}
+<div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/90 to-slate-900 z-10"></div>
 
         {/* Hero Content - Perfectly spaced */}
         <div className="relative z-20 w-full max-w-4xl mx-auto text-center mt-8">
