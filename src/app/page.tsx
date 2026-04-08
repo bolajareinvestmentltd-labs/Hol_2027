@@ -41,7 +41,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section - Redesigned to NEVER cut off buttons on mobile */}
-      <section className="relative min-h-screen w-full flex flex-col justify-center items-center bg-slate-900 pt-28 pb-16 px-4">
+      <section className="relative min-h-[70vh] md:min-h-screen w-full flex flex-col justify-center items-center bg-slate-900 pt-28 pb-16 px-4">
         
         {heroImages.map((src, index) => (
           <div
@@ -52,7 +52,7 @@ export default function Home() {
           >
             <img 
   src={src} 
-  className="w-full h-full object-cover object-center" 
+  className="w-full h-full object-contain object-top md:object-cover md:object-center bg-slate-900" 
   alt={`Hakeem Lawal Campaign Slide ${index + 1}`} 
 />
           </div>
