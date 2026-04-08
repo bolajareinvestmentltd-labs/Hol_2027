@@ -32,7 +32,7 @@ export default function Home() {
             <span className="hover:text-blue-300 cursor-pointer transition">Legacy</span>
             <span className="hover:text-blue-300 cursor-pointer transition">Issues</span>
           </div>
-          <img src="/logo.png" alt="Party Logo" className="h-12 drop-shadow-md" />
+          <img src="/logo.png" alt="Party Logo" className="h-16 drop-shadow-md" />
         </div>
       </nav>
 
