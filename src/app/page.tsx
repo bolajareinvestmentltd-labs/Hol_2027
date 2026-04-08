@@ -32,10 +32,7 @@ export default function Home() {
             <span className="hover:text-blue-300 cursor-pointer transition">Legacy</span>
             <span className="hover:text-blue-300 cursor-pointer transition">Issues</span>
           </div>
-          {/* Party Logo Section - Professional Standard */}
-          <div className="w-12 h-12 rounded-lg border-2 border-blue-400/50 bg-blue-900/40 backdrop-blur-md flex items-center justify-center drop-shadow-md">
-            <img src="/logo.png" alt="Party Logo" className="w-10 h-10 object-contain" />
-          </div>
+          <img src="/logo.png" alt="Party Logo" className="h-12 drop-shadow-md" />
         </div>
       </nav>
 
@@ -64,7 +61,7 @@ export default function Home() {
         {/* Hero Content */}
         <div className="relative z-20 max-w-4xl mx-auto text-center px-6 mt-16">
           <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-blue-400/50 bg-blue-900/40 backdrop-blur-md text-blue-100 text-sm font-bold tracking-wide">
-            VISION FOR KWARAO YOU FEEL ABOUT ADD THE PARTY LOGO AT THE RIGHT SI
+            VISION FOR KWARA
           </div>
           
           <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight drop-shadow-lg">
