@@ -3,17 +3,15 @@
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  // These represent your 3-4 hero images. 
-  // Later, you will name your real images 'hero1.jpg', 'hero2.jpg', etc., and put them in the 'public' folder.
+  // Updated to match your exact Windows .jpeg extensions
   const heroImages = [
-    "bg-slate-900", // Placeholder 1
-    "bg-blue-900",  // Placeholder 2
-    "bg-slate-800", // Placeholder 3
+    "/hero1.jpeg", 
+    "/hero2.jpeg", 
+    "/hero3.jpeg", 
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // This automatically changes the slide every 5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length);
@@ -35,29 +33,29 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section with Carousel Background */}
-      <section className="relative h-[90vh] min-h-[600px] w-full overflow-hidden flex items-center justify-center">
-        {/* Carousel Backgrounds */}
-        {heroImages.map((bgClass, index) => (
+      {/* Hero Section with Image Carousel Background */}
+      <section className="relative h-[90vh] min-h-[600px] w-full overflow-hidden flex items-center justify-center bg-slate-900">
+        
+        {/* Actual Image Tags */}
+        {heroImages.map((src, index) => (
           <div
             key={index}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${bgClass} ${
+            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
               currentSlide === index ? "opacity-100" : "opacity-0"
             }`}
           >
-            {/* When you have real images, you will replace the bgClass above with an img tag like this:
-                <img src={`/hero${index + 1}.jpg`} className="w-full h-full object-cover" alt="Campaign" /> 
-            */}
-            <div className="w-full h-full flex items-center justify-center text-slate-500/50 font-bold text-2xl">
-              [Image {index + 1} Goes Here]
-            </div>
+            <img 
+              src={src} 
+              className="w-full h-full object-cover object-top" 
+              alt={`Hakeem Lawal Campaign Slide ${index + 1}`} 
+            />
           </div>
         ))}
 
-        {/* Dark Cinematic Overlay - This makes the white text readable over any photo */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-slate-900 z-10"></div>
+        {/* Dark Cinematic Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-slate-900 z-10"></div>
 
-        {/* Hero Content (On Top of Carousel) */}
+        {/* Hero Content */}
         <div className="relative z-20 max-w-4xl mx-auto text-center px-6 mt-16">
           <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-blue-400/50 bg-blue-900/40 backdrop-blur-md text-blue-100 text-sm font-bold tracking-wide">
             THE OFFICIAL CAMPAIGN PLATFORM
@@ -83,10 +81,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Him & Legacy Section (Combined) */}
+      {/* About Him & Legacy Section */}
       <section className="max-w-7xl mx-auto px-6 pt-24 pb-16">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Left Side: Copy */}
           <div>
             <h2 className="text-blue-700 font-bold tracking-wider text-sm mb-2 uppercase">A Foundation of Excellence</h2>
             <h3 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
@@ -112,16 +109,25 @@ export default function Home() {
             </ul>
           </div>
 
-          {/* Right Side: Portrait Image (Moved down as you requested) */}
-          <div className="relative">
+          {/* Right Side: Portrait & Legacy Images */}
+          <div className="relative mt-10 md:mt-0">
             <div className="absolute inset-0 bg-blue-600 rounded-3xl transform translate-x-4 translate-y-4 -z-10"></div>
-            <div className="w-full h-[500px] bg-slate-200 rounded-3xl border-4 border-white shadow-lg flex flex-col items-center justify-center p-8 text-center overflow-hidden">
-              <p className="text-slate-500 font-bold text-xl mb-2">
-                [High-Res Portrait Here]
-              </p>
-              <p className="text-slate-400 text-sm max-w-xs">
-                This is the perfect spot for his standalone portrait or the legacy composite photo.
-              </p>
+            
+            <div className="w-full h-[400px] md:h-[500px] rounded-3xl border-4 border-white shadow-xl overflow-hidden relative">
+              <img 
+                src="/about-hakeem.jpeg" 
+                alt="Alh. Hakeem Lawal" 
+                className="w-full h-full object-cover object-top"
+              />
+              
+              {/* UPGRADED: Circular Legacy Medallion */}
+              <div className="absolute -bottom-4 -left-4 md:bottom-8 md:-left-12 w-36 h-36 md:w-48 md:h-48 rounded-full border-[6px] border-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] overflow-hidden bg-white z-20">
+                <img 
+                  src="/legacy-father.jpeg" 
+                  alt="Late Rear Admiral Mohammed Alabi Lawal" 
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
             </div>
           </div>
         </div>
