@@ -1,23 +1,22 @@
 "use client";
-
 import Link from "next/link";
 
 export default function RoadmapPage() {
   const pillars = [
-    { step: "01", title: "Economic Rebirth & Wealth Creation", desc: "Utilizing international finance expertise to attract global investment, empower local SMEs, and transform Kwara into an economic hub.", color: "bg-blue-600" },
-    { step: "02", title: "Youth & Educational Empowerment", desc: "Moving beyond basic literacy to equip our youth with modern tech skills, vocational mastery, and direct pathways to employment.", color: "bg-yellow-500" },
-    { step: "03", title: "Sustainable Infrastructure", desc: "Building roads, healthcare facilities, and energy grids that actually last, ensuring every Kwaran has access to dignified living conditions.", color: "bg-slate-800" }
+    { step: "01", title: "Economic Rebirth & Wealth Creation", desc: "Utilizing international finance expertise to attract global investment, empower local SMEs with stimulation grants, and transform Kwara into an economic hub.", color: "bg-blue-600" },
+    { step: "02", title: "Youth & Educational Empowerment", desc: "Moving beyond basic literacy to equip our youth with modern tech skills, vocational mastery, and direct pathways to employment and entrepreneurship.", color: "bg-yellow-500" },
+    { step: "03", title: "Sustainable Infrastructure", desc: "Building roads, healthcare facilities, and energy grids that actually last, ensuring every Kwaran has access to dignified living conditions and business enablement.", color: "bg-slate-800" },
+    { step: "04", title: "Accessible Healthcare for All", desc: "Expanding the Awliya Foundation's medical outreach into state-wide policy, ensuring well-equipped primary healthcare centers in all 16 Local Government Areas.", color: "bg-green-600" },
+    { step: "05", title: "Agricultural Revolution", desc: "Providing farmers with modern tools, fertilizers, and direct-to-market access to ensure food security and turn Kwara into an agricultural powerhouse.", color: "bg-orange-500" }
   ];
 
   return (
     <main className="min-h-screen bg-white selection:bg-blue-900 selection:text-white pb-20">
       <nav className="w-full p-4 md:p-6 flex justify-between items-center bg-slate-950 sticky top-0 z-50">
         <Link href="/" className="flex items-center gap-3">
-          <div className="text-2xl font-black tracking-tighter text-white">
-            HOL <span className="text-blue-400">2027</span>
-          </div>
+          <div className="text-2xl font-black tracking-tighter text-white">HOL <span className="text-blue-400">2027</span></div>
         </Link>
-        <Link href="/" className="text-sm font-semibold text-slate-300 hover:text-white transition">
+        <Link href="/" className="text-sm font-bold text-slate-300 hover:text-white transition px-4 py-2 bg-white/10 rounded-full">
           &larr; Back to Home
         </Link>
       </nav>
@@ -25,7 +24,7 @@ export default function RoadmapPage() {
       <header className="w-full py-20 px-4 text-center">
         <h3 className="text-blue-600 font-bold tracking-widest uppercase mb-4">The Masterplan</h3>
         <h1 className="text-4xl md:text-6xl font-serif font-black text-slate-900 mb-6">The Roadmap for Kwara</h1>
-        <p className="text-xl text-slate-600 max-w-2xl mx-auto">We don't just have hope; we have a blueprint. Here is our step-by-step strategy to elevate our state.</p>
+        <p className="text-xl text-slate-600 max-w-2xl mx-auto">We don't just have hope; we have a blueprint. Here is our comprehensive 5-point strategy to elevate our state.</p>
       </header>
 
       <section className="max-w-5xl mx-auto px-4">

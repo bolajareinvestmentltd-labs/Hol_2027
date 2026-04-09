@@ -3,7 +3,6 @@ import { useState, useEffect, MouseEvent } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  // FIXED: Changed to .jpg to match your files
   const heroImages = ["/hero1.jpg", "/hero2.jpg", "/hero3.jpg"];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
@@ -11,9 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     setIsMounted(true);
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
+    const timer = setInterval(() => setCurrentSlide((prev) => (prev + 1) % heroImages.length), 5000);
     return () => clearInterval(timer);
   }, [heroImages.length]);
 
@@ -34,6 +31,7 @@ export default function Home() {
         </div>
       )}
 
+      {/* FIXED NAVBAR: Added 'Team' to the links */}
       <nav className="w-full pt-4 pb-2 px-4 md:p-6 flex flex-col md:flex-row justify-between items-center absolute top-0 left-0 right-0 z-50 gap-3 md:gap-0 bg-gradient-to-b from-slate-900/80 to-transparent">
         <div className="flex items-center gap-3 w-full justify-between md:w-auto">
           <div className="text-2xl md:text-3xl font-black tracking-tighter text-white drop-shadow-md">
@@ -45,8 +43,9 @@ export default function Home() {
         </div>
         <div className="flex gap-4 md:gap-6 text-xs md:text-sm font-bold text-white drop-shadow-md bg-black/30 md:bg-transparent px-5 py-2.5 rounded-full backdrop-blur-md md:backdrop-blur-none border border-white/20 md:border-none">
           <button onClick={(e) => handleNavigation(e, '/about')} className="hover:text-blue-300 transition tracking-wide">Meet Hakeem</button>
-          <button onClick={(e) => handleNavigation(e, '/legacy')} className="hover:text-blue-300 transition tracking-wide">Legacy</button>
           <button onClick={(e) => handleNavigation(e, '/roadmap')} className="hover:text-blue-300 transition tracking-wide">Roadmap</button>
+          <button onClick={(e) => handleNavigation(e, '/team')} className="hover:text-blue-300 transition tracking-wide text-yellow-400">Team</button>
+          <button onClick={(e) => handleNavigation(e, '/legacy')} className="hover:text-blue-300 transition tracking-wide">Legacy</button>
         </div>
       </nav>
 
@@ -80,7 +79,6 @@ export default function Home() {
                 The Roadmap
               </button>
               <div className="flex gap-4 w-full">
-                {/* FIXED: Swapped CTA to Meet Hakeem */}
                 <button onClick={(e) => handleNavigation(e, '/about')} className="flex-1 py-3 rounded-full bg-transparent border-2 border-white/40 hover:bg-white/10 text-white font-semibold shadow-sm backdrop-blur-sm transition-all">
                   Meet Hakeem
                 </button>
@@ -106,7 +104,6 @@ export default function Home() {
       <section className="w-full bg-slate-50 py-20 px-4">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="w-full aspect-[4/5] bg-slate-300 rounded-2xl shadow-xl overflow-hidden relative">
-            {/* FIXED: Activated Image */}
             <img src="/hakeem-approachable.jpg" alt="Meet Hakeem" className="absolute inset-0 w-full h-full object-cover" />
           </div>
           <div className="space-y-6">
@@ -122,6 +119,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FIXED: Added Team CTA on Homepage */}
+      <section className="w-full bg-slate-100 py-16 px-4 text-center border-y border-slate-200">
+        <div className="max-w-3xl mx-auto">
+           <h2 className="text-3xl font-serif font-bold text-slate-900 mb-6">A Leader is Only as Strong as His Team</h2>
+           <p className="text-lg text-slate-600 mb-8">Discover the brilliant minds, veteran strategists, and grassroots champions driving the Kwara Masterplan forward.</p>
+           <button onClick={(e) => handleNavigation(e, '/team')} className="inline-block py-4 px-10 rounded-full bg-slate-900 hover:bg-blue-600 text-white font-bold text-lg shadow-lg transition-all transform hover:-translate-y-1">
+             Meet the Campaign Team
+           </button>
+        </div>
+      </section>
+
       <section className="w-full bg-slate-900 py-24 px-4 text-center">
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex flex-col items-center mb-16 text-center">
@@ -133,7 +141,6 @@ export default function Home() {
             </h2>
           </div>
           <div className="relative inline-block w-full max-w-lg aspect-[3/4] rounded-3xl overflow-hidden shadow-xl border-4 border-slate-700/50 bg-slate-700">
-              {/* FIXED: Activated Legacy Images */}
               <img src="/hakeem-portrait-brown-cap.jpg" alt="Alh. Hakeem Lawal" className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute bottom-6 left-6 w-36 h-36 rounded-full overflow-hidden border-8 border-white shadow-xl aspect-square z-10 bg-slate-800">
                   <img src="/father-portrait.jpg" alt="Alh. Mohammed Lawal" className="absolute inset-0 w-full h-full object-cover" />
@@ -161,9 +168,6 @@ export default function Home() {
              <div className="flex justify-center md:justify-end gap-6 mb-10">
                <a href="#" className="w-12 h-12 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors">
                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd"/></svg>
-               </a>
-               <a href="#" className="w-12 h-12 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center transition-colors">
-                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.004 4.096H5.078z"/></svg>
                </a>
              </div>
           </div>
