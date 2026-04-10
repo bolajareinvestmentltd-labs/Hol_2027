@@ -24,3 +24,16 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* Presidential Theme Colors */
+@theme {
+  --color-slate-800: #112240;
+  --color-slate-900: #0A192F;
+  --color-slate-950: #020C1B;
+  --color-yellow-400: #D4AF37;
+  --color-yellow-500: #B5952F;
+  --color-blue-400: #64FFDA;
+  --color-blue-600: #1D4ED8;
+  --color-blue-900: #0A192F;
+}

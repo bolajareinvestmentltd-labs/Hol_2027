@@ -3,6 +3,8 @@ import { useState, useEffect, MouseEvent } from "react";
 import Link from "next/link";
 
 export default function Home() {
+  const [showDropdown, setShowDropdown] = useState(false);
+
   const heroImages = ["/hero1.jpg", "/hero2.jpg", "/hero3.jpg"];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
@@ -27,7 +29,7 @@ export default function Home() {
           <div className="w-20 h-20 bg-white rounded-full p-2 animate-pulse mb-4">
             <img src="/logo.png" alt="Loading..." className="w-full h-full object-cover animate-spin-slow rounded-full" />
           </div>
-          <p className="text-white font-semibold tracking-widest animate-pulse">LOADING VISION...</p>
+          <p className="text-white font-black tracking-[0.3em] text-xl animate-pulse">HOL <span className="text-blue-400">2027</span></p>
         </div>
       )}
 
@@ -42,10 +44,10 @@ export default function Home() {
           </div>
         </div>
         <div className="flex gap-4 md:gap-6 text-xs md:text-sm font-bold text-white drop-shadow-md bg-black/30 md:bg-transparent px-5 py-2.5 rounded-full backdrop-blur-md md:backdrop-blur-none border border-white/20 md:border-none">
-          <button onClick={(e) => handleNavigation(e, '/about')} className="hover:text-blue-300 transition tracking-wide">Meet Hakeem</button>
-          <button onClick={(e) => handleNavigation(e, '/roadmap')} className="hover:text-blue-300 transition tracking-wide">Roadmap</button>
-          <button onClick={(e) => handleNavigation(e, '/team')} className="hover:text-blue-300 transition tracking-wide text-yellow-400">Team</button>
+          <button onClick={(e) => handleNavigation(e, '/foundation')} className="hover:text-blue-300 transition tracking-wide">Foundation</button>
           <button onClick={(e) => handleNavigation(e, '/legacy')} className="hover:text-blue-300 transition tracking-wide">Legacy</button>
+          <button onClick={(e) => handleNavigation(e, '/team')} className="hover:text-blue-300 transition tracking-wide text-yellow-400">Team</button>
+          <button onClick={(e) => handleNavigation(e, '/contact')} className="hover:text-blue-300 transition tracking-wide">Contact</button>
         </div>
       </nav>
 
@@ -61,7 +63,7 @@ export default function Home() {
           <div className={`transition-all duration-1000 ease-out transform ${isMounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
              <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-6 shadow-xl">
                 <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <span className="text-xs md:text-sm font-black text-white tracking-[0.2em] uppercase">For Governor, Kwara State</span>
+                <span className="text-xs md:text-sm font-black text-white tracking-[0.2em] uppercase flex items-center gap-2 animate-[pulse_3s_ease-in-out_infinite] hover:scale-105 transition-transform cursor-default">Aspiration <svg className="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg> Watch Out</span>
              </div>
           </div>
           <div className={`transition-all duration-1000 ease-out delay-100 transform ${isMounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
@@ -78,13 +80,27 @@ export default function Home() {
               <button onClick={(e) => handleNavigation(e, '/roadmap')} className="w-full py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-lg shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1">
                 The Roadmap
               </button>
-              <div className="flex gap-4 w-full">
-                <button onClick={(e) => handleNavigation(e, '/about')} className="flex-1 py-3 rounded-full bg-transparent border-2 border-white/40 hover:bg-white/10 text-white font-semibold shadow-sm backdrop-blur-sm transition-all">
-                  Meet Hakeem
-                </button>
-                <button onClick={(e) => handleNavigation(e, '/volunteer')} className="flex-1 py-3 rounded-full bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold shadow-md transition-all">
-                  Join Movement
-                </button>
+              <div className="flex gap-4 w-full relative">
+                <div className="flex-1 relative">
+                  <button 
+                    onClick={() => setShowDropdown(!showDropdown)} 
+                    className="w-full py-3 rounded-full bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold shadow-md transition-all flex items-center justify-center gap-2"
+                  >
+                    Stand With Hakeem
+                    <svg className={`w-4 h-4 transition-transform duration-200 ${showDropdown ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </button>
+
+                  {showDropdown && (
+                    <div className="absolute top-full left-0 w-full mt-2 bg-white/95 backdrop-blur-lg rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50 animate-in slide-in-from-top-2">
+                      <div className="flex flex-col text-sm font-semibold text-slate-800 text-left">
+                        <button className="px-4 py-3 hover:bg-blue-50 hover:text-blue-700 text-left transition-colors border-b border-gray-100" onClick={() => {}}>Volunteer Hub</button>
+                        <button className="px-4 py-3 hover:bg-blue-50 hover:text-blue-700 text-left transition-colors border-b border-gray-100" onClick={() => {}}>Digital Ambassador</button>
+                        <button className="px-4 py-3 hover:bg-blue-50 hover:text-blue-700 text-left transition-colors border-b border-gray-100" onClick={() => {}}>Join Local Ward</button>
+                        <button className="px-4 py-3 bg-blue-50 hover:bg-blue-100 text-blue-700 text-left transition-colors" onClick={() => {}}>Donate to Campaign</button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

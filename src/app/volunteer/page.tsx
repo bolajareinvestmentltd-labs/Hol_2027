@@ -1,106 +1,48 @@
 "use client";
-
-import { useState } from "react";
-import Link from "next/link";
+import SmartForm from "@/components/SmartForm";
 
 export default function VolunteerPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1500);
-  };
-
   return (
-    <main className="min-h-screen bg-white selection:bg-blue-900 selection:text-white pb-20">
-      
-      <nav className="w-full p-4 md:p-6 flex justify-between items-center bg-slate-950 sticky top-0 z-50">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="text-2xl font-black tracking-tighter text-white">
-            HOL <span className="text-blue-400">2027</span>
-          </div>
-        </Link>
-        <Link href="/" className="text-sm font-bold text-slate-300 hover:text-white transition px-4 py-2 bg-white/10 rounded-full">
-          &larr; Back to Home
-        </Link>
-      </nav>
+    <main className="min-h-screen bg-slate-50 overflow-x-hidden pb-20 pt-32">
+      <section className="max-w-6xl mx-auto px-6">
+        
+        <div className="text-center max-w-3xl mx-auto mb-16">
+           <span className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-2 block">Take Action</span>
+           <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">Become a Grassroots Ambassador</h1>
+           <p className="text-lg text-slate-600">The HOL 2027 Masterplan cannot be achieved by one person alone. We need dedicated Kwarans across every ward, local government, and digital space to carry the message forward.</p>
+        </div>
 
-      <header className="w-full py-20 px-4 text-center">
-        <h3 className="text-blue-600 font-bold tracking-widest uppercase mb-4">Grassroots Action</h3>
-        <h1 className="text-4xl md:text-6xl font-serif font-black text-slate-900 mb-4">Stand With Hakeem</h1>
-        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-          A movement is built by the people. Sign up to volunteer, canvas, or support the campaign in your local government area.
-        </p>
-      </header>
-
-      <section className="max-w-2xl mx-auto px-4">
-        {isSuccess ? (
-          <div className="bg-green-50 border-2 border-green-500 rounded-3xl p-10 text-center shadow-lg">
-            <div className="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center text-4xl mx-auto mb-6">✓</div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Welcome to the Team!</h2>
-            <p className="text-lg text-slate-600 mb-8">Your details have been received. Our campaign coordinators will reach out to you shortly.</p>
-            <button onClick={() => setIsSuccess(false)} className="text-blue-600 font-bold hover:underline">Submit another response</button>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="bg-slate-50 p-8 md:p-10 rounded-3xl shadow-xl border border-slate-100 space-y-6">
-            
-            <div>
-              <label className="block text-sm font-bold text-slate-700 mb-2">Full Name</label>
-              <input required type="text" placeholder="Enter your full name" className="w-full px-5 py-4 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
-                <input required type="tel" placeholder="080..." className="w-full px-5 py-4 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white" />
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+           
+           {/* Left Side: Information */}
+           <div className="space-y-8">
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex gap-4">
+                 <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex shrink-0 items-center justify-center font-bold text-xl">1</div>
+                 <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">Ward Mobilizer</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">Engage directly with your community. Help us organize town halls, distribute campaign materials, and secure the vote block by block.</p>
+                 </div>
               </div>
-              <div>
-                <label className="block text-sm font-bold text-slate-700 mb-2">Email (Optional)</label>
-                <input type="email" placeholder="your@email.com" className="w-full px-5 py-4 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white" />
+
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex gap-4">
+                 <div className="w-12 h-12 bg-yellow-50 text-yellow-600 rounded-full flex shrink-0 items-center justify-center font-bold text-xl">2</div>
+                 <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">Digital Ambassador</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">Control the narrative online. Amplify our policies on Facebook, X, and Instagram to combat misinformation and spread the vision.</p>
+                 </div>
               </div>
-            </div>
+           </div>
 
-            <div>
-              <label className="block text-sm font-bold text-slate-700 mb-2">Your Local Government Area (LGA)</label>
-              <select required className="w-full px-5 py-4 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition bg-white appearance-none">
-                <option value="" disabled selected>Select your LGA in Kwara...</option>
-                <option value="ilorin-west">Ilorin West</option>
-                <option value="ilorin-east">Ilorin East</option>
-                <option value="ilorin-south">Ilorin South</option>
-                <option value="asa">Asa</option>
-                <option value="moro">Moro</option>
-                <option value="offa">Offa</option>
-                <option value="ifelodun">Ifelodun</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
+           {/* Right Side: The Smart Form */}
+           <div>
+              <SmartForm 
+                formType="volunteer" 
+                title="Join the Team" 
+                subtitle="Sign up below. Your Local Government Coordinator will contact you directly."
+              />
+           </div>
 
-            <div>
-              <label className="block text-sm font-bold text-slate-700 mb-3">How would you like to help?</label>
-              <div className="space-y-3">
-                {['Grassroots Canvassing', 'Social Media Ambassador', 'Event Logistics', 'Awliya Foundation Support'].map((role) => (
-                  <label key={role} className="flex items-center gap-3 p-3 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-100 transition bg-white">
-                    <input type="checkbox" className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500" />
-                    <span className="text-slate-700 font-medium">{role}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            <button disabled={isSubmitting} type="submit" className="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-lg shadow-lg transition-all flex justify-center items-center">
-              {isSubmitting ? (
-                <span className="animate-pulse">Processing...</span>
-              ) : (
-                "Join the Movement"
-              )}
-            </button>
-          </form>
-        )}
+        </div>
       </section>
     </main>
   );
