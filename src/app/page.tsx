@@ -30,7 +30,6 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-screen w-full flex flex-col items-center justify-center pt-20">
         <div className="absolute inset-0 w-full h-full">
-          {/* Replace this with the actual image you are using for the hero */}
           <div className="w-full h-full bg-slate-800"></div> 
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-950"></div>
         </div>
@@ -44,13 +43,11 @@ export default function Home() {
             </span>
           </div>
 
-          {/* Correctly Scaled Headline */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-white mb-6 leading-tight drop-shadow-2xl">
             Legacy of Service,<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-300">Future for Kwara</span>
           </h1>
 
-          {/* Styled Name & Titles */}
           <div className="mb-10 flex flex-col items-center">
             <p className="text-xl md:text-2xl font-bold text-yellow-500 drop-shadow-md">
               Alh. Hakeem Olademeji Lawal
@@ -61,20 +58,17 @@ export default function Home() {
             <p className="text-xs md:text-sm text-slate-300 font-medium">B.A. (Hons), M.Sc., FIMC, MNIM</p>
           </div>
 
-          {/* Responsive Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 w-full max-w-lg mx-auto relative">
             <button onClick={(e) => handleNavigation(e, '/roadmap')} className="w-full py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold shadow-lg transition-all text-sm">
               The Roadmap
             </button>
             
-            {/* Dropdown Button */}
             <div className="w-full relative">
               <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="w-full py-4 rounded-full bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold shadow-lg transition-all text-sm flex items-center justify-center gap-2">
                 Stand With Hakeem
                 <svg className={`w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
 
-              {/* The Fixed Dropdown Menu */}
               {isDropdownOpen && (
                 <div className="absolute top-full mt-3 w-full bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-100 z-50">
                   <div className="flex flex-col text-sm font-bold text-slate-800 text-left">
@@ -83,8 +77,6 @@ export default function Home() {
                       Empowerment Portal <span className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></span>
                     </button>
                     <button className="px-5 py-4 hover:bg-blue-50 text-left border-b border-gray-100" onClick={(e) => handleNavigation(e, '/volunteer')}>Digital Ambassador</button>
-                    
-                    {/* Q&A Button Replacing Donations */}
                     <button className="px-5 py-4 bg-slate-50 hover:bg-blue-100 text-blue-700 text-left flex justify-between items-center" onClick={(e) => handleNavigation(e, '/qa')}>
                       <span>Q&A & Suggestions</span>
                       <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
