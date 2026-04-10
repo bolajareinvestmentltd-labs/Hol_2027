@@ -1,3 +1,4 @@
+import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SplashScreen from '@/components/SplashScreen';
 import type { Metadata } from "next";
@@ -30,6 +31,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Navbar />
         <SplashScreen />{children}  <Footer />
       </body>
     </html>
